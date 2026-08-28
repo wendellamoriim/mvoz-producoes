@@ -91,7 +91,7 @@ const ContactsSection = () => {
             className="rounded-lg overflow-hidden border border-border h-[400px]"
           >
             <iframe
-              src="https://maps.google.com/maps?q=Rua+da+Bela+Vista,+Alto+da+Bela+Vista,+S%C3%A3o+Marcos,+2735-184+Agualva-Cac%C3%A9m&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3111.018!2d-9.3037762!3d38.7633539!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1ecd001ef1c869%3A0x147a99296f9f36e2!2sEst%C3%BAdio%20de%20Podcast%20M%20voz%20Produ%C3%A7%C3%B5es!5e0!3m2!1spt-PT!2spt!4v1"
               width="100%"
               height="100%"
               style={{ border: 0 }}
