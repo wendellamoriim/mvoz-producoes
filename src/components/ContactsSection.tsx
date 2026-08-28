@@ -29,7 +29,7 @@ const ContactsSection = () => {
               {
                 icon: MapPin,
                 title: "Morada",
-                lines: ["Av. Movimento das Forças Armadas 8", "Amadora, Portugal"],
+                lines: ["Rua da Bela Vista, Alto da Bela Vista", "São Marcos, 2735-184 Agualva-Cacém, Portugal"],
               },
               {
                 icon: Mail,
@@ -91,7 +91,7 @@ const ContactsSection = () => {
             className="rounded-lg overflow-hidden border border-border h-[400px]"
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3111.4!2d-9.23!3d38.75!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDQ1JzAwLjAiTiA5wrAxMyc0OC4wIlc!5e0!3m2!1spt-PT!2spt!4v1"
+              src="https://maps.google.com/maps?q=Rua+da+Bela+Vista,+Alto+da+Bela+Vista,+S%C3%A3o+Marcos,+2735-184+Agualva-Cac%C3%A9m&t=&z=15&ie=UTF8&iwloc=&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}

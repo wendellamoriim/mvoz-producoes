@@ -17,7 +17,7 @@ const AboutSection = () => {
               Produção Audiovisual <span className="text-gradient-gold">de Excelência</span>
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4 font-sans">
-              A M Voz Produções é uma produtora audiovisual localizada na Amadora, Portugal, dedicada à criação de conteúdos visuais com qualidade profissional. Trabalhamos com empresas, artistas e criadores que procuram elevar o nível da sua comunicação através de vídeos, fotografia e produção audiovisual criativa.
+              A M Voz Produções é uma produtora audiovisual localizada em São Marcos, Agualva-Cacém, Portugal, dedicada à criação de conteúdos visuais com qualidade profissional. Trabalhamos com empresas, artistas e criadores que procuram elevar o nível da sua comunicação através de vídeos, fotografia e produção audiovisual criativa.
             </p>
             <p className="text-muted-foreground leading-relaxed font-sans">
               Combinamos técnica, criatividade e visão estratégica para transformar ideias em projetos visuais impactantes.
