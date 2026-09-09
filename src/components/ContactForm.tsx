@@ -16,15 +16,44 @@ const serviceOptions = [
 
 const ContactForm = () => {
   const [form, setForm] = useState({ name: "", email: "", phone: "", service: "", message: "" });
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name.trim() || !form.email.trim()) {
       toast.error("Por favor, preencha os campos obrigatórios.");
       return;
     }
-    toast.success("Pedido enviado com sucesso! Entraremos em contacto brevemente.");
-    setForm({ name: "", email: "", phone: "", service: "", message: "" });
+
+    setLoading(true);
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/contato@mvozproducoes.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          _subject: `Solicitação de Orçamento - ${form.name}`,
+          Nome: form.name,
+          Email: form.email,
+          Telefone: form.phone || "Não informado",
+          Serviço: form.service || "Não informado",
+          Mensagem: form.message || "Sem mensagem",
+        }),
+      });
+
+      if (response.ok) {
+        toast.success("Pedido enviado com sucesso! Entraremos em contacto brevemente.");
+        setForm({ name: "", email: "", phone: "", service: "", message: "" });
+      } else {
+        toast.error("Ocorreu um erro ao enviar o formulário. Tente novamente.");
+      }
+    } catch {
+      toast.error("Erro de conexão. Por favor, tente novamente.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -62,6 +91,7 @@ const ContactForm = () => {
                 value={form[field.name as keyof typeof form]}
                 onChange={(e) => setForm({ ...form, [field.name]: e.target.value })}
                 maxLength={255}
+                required={field.name !== "phone"}
                 className="w-full bg-secondary border border-border rounded px-4 py-3 text-foreground placeholder:text-muted-foreground text-sm font-sans focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-colors"
               />
             </div>
@@ -95,10 +125,11 @@ const ContactForm = () => {
 
           <button
             type="submit"
-            className="w-full inline-flex items-center justify-center gap-2 bg-gradient-gold text-primary-foreground px-8 py-3 rounded font-semibold tracking-wider uppercase text-sm hover:opacity-90 transition-opacity"
+            disabled={loading}
+            className="w-full inline-flex items-center justify-center gap-2 bg-gradient-gold text-primary-foreground px-8 py-3 rounded font-semibold tracking-wider uppercase text-sm hover:opacity-90 transition-opacity disabled:opacity-50"
           >
             <Send size={16} />
-            Solicitar Orçamento
+            {loading ? "A enviar..." : "Solicitar Orçamento"}
           </button>
         </motion.form>
       </div>

@@ -34,8 +34,8 @@ const ContactsSection = () => {
               {
                 icon: Mail,
                 title: "Email",
-                lines: ["mvozproducoes@hotmail.com"],
-                href: "mailto:mvozproducoes@hotmail.com",
+                lines: ["contato@mvozproducoes.com"],
+                href: "mailto:contato@mvozproducoes.com",
               },
               {
                 icon: Phone,

@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Play } from "lucide-react";
+import { Play, X } from "lucide-react";
 import portfolio1 from "@/assets/portfolio-1.jpg";
 import portfolio2 from "@/assets/portfolio-2.jpg";
 import portfolio3 from "@/assets/portfolio-3.jpg";
 import portfolio4 from "@/assets/portfolio-4.jpg";
 import portfolio5 from "@/assets/portfolio-5.jpg";
 import portfolio6 from "@/assets/portfolio-6.jpg";
+import playerPodcast from "@/assets/player-podcast.mp4";
 
 const categories = [
   "Todos",
@@ -18,8 +19,16 @@ const categories = [
   "Ensaios Fotográficos",
 ];
 
-const portfolioItems = [
-  { image: portfolio1, title: "Podcast Pro Studio", category: "Podcasts", isVideo: true },
+interface PortfolioItem {
+  image: string;
+  title: string;
+  category: string;
+  isVideo: boolean;
+  videoUrl?: string;
+}
+
+const portfolioItems: PortfolioItem[] = [
+  { image: portfolio1, title: "Podcast Pro Studio", category: "Podcasts", isVideo: true, videoUrl: playerPodcast },
   { image: portfolio2, title: "Campanha Publicitária", category: "Publicidade", isVideo: true },
   { image: portfolio3, title: "Videoclipe Musical", category: "Clipes Musicais", isVideo: true },
   { image: portfolio4, title: "Ensaio Editorial", category: "Ensaios Fotográficos", isVideo: false },
@@ -29,6 +38,7 @@ const portfolioItems = [
 
 const PortfolioSection = () => {
   const [active, setActive] = useState("Todos");
+  const [selectedVideo, setSelectedVideo] = useState<PortfolioItem | null>(null);
   const filtered = active === "Todos" ? portfolioItems : portfolioItems.filter((p) => p.category === active);
 
   return (
@@ -79,6 +89,7 @@ const PortfolioSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
+                onClick={() => item.videoUrl && setSelectedVideo(item)}
                 className="group relative rounded-lg overflow-hidden aspect-video cursor-pointer"
               >
                 <img
@@ -88,7 +99,7 @@ const PortfolioSection = () => {
                 />
                 <div className="absolute inset-0 bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center">
                   {item.isVideo && (
-                    <div className="w-14 h-14 rounded-full bg-primary/90 flex items-center justify-center mb-3">
+                    <div className="w-14 h-14 rounded-full bg-primary/90 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                       <Play className="text-primary-foreground ml-1" size={22} />
                     </div>
                   )}
@@ -98,6 +109,48 @@ const PortfolioSection = () => {
               </motion.div>
             ))}
           </motion.div>
+        </AnimatePresence>
+
+        {/* Video Player Modal */}
+        <AnimatePresence>
+          {selectedVideo && selectedVideo.videoUrl && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedVideo(null)}
+              className="fixed inset-0 z-50 bg-background/80 backdrop-blur-md flex items-center justify-center p-4 md:p-8"
+            >
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                onClick={(e) => e.stopPropagation()}
+                className="relative w-full max-w-4xl bg-card border border-border rounded-xl overflow-hidden shadow-2xl"
+              >
+                <div className="flex items-center justify-between p-4 border-b border-border bg-secondary/50">
+                  <div>
+                    <h3 className="font-display text-lg font-semibold text-foreground">{selectedVideo.title}</h3>
+                    <p className="text-xs text-primary font-sans tracking-wider uppercase">{selectedVideo.category}</p>
+                  </div>
+                  <button
+                    onClick={() => setSelectedVideo(null)}
+                    className="p-2 rounded-lg bg-secondary text-muted-foreground hover:text-foreground hover:bg-primary/20 transition-colors"
+                  >
+                    <X size={20} />
+                  </button>
+                </div>
+                <div className="aspect-video w-full bg-black">
+                  <video
+                    src={selectedVideo.videoUrl}
+                    controls
+                    autoPlay
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
         </AnimatePresence>
       </div>
     </section>
