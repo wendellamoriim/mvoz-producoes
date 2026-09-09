@@ -48,11 +48,21 @@ const FeaturedVideos = () => {
               onClick={() => video.videoUrl && setSelectedVideo(video)}
               className="group relative rounded-lg overflow-hidden aspect-video cursor-pointer"
             >
-              <img
-                src={video.thumbnail}
-                alt={video.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
+              {video.videoUrl ? (
+                <video
+                  src={`${video.videoUrl}#t=0.1`}
+                  preload="metadata"
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              ) : (
+                <img
+                  src={video.thumbnail}
+                  alt={video.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              )}
               <div className="absolute inset-0 bg-background/40 group-hover:bg-background/60 transition-colors duration-500 flex items-center justify-center">
                 <div className="w-16 h-16 rounded-full border-2 border-primary/60 flex items-center justify-center group-hover:border-primary group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-500">
                   <Play className="text-primary ml-1" size={24} />

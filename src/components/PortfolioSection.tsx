@@ -92,11 +92,21 @@ const PortfolioSection = () => {
                 onClick={() => item.videoUrl && setSelectedVideo(item)}
                 className="group relative rounded-lg overflow-hidden aspect-video cursor-pointer"
               >
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
+                {item.videoUrl ? (
+                  <video
+                    src={`${item.videoUrl}#t=0.1`}
+                    preload="metadata"
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                ) : (
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                )}
                 <div className="absolute inset-0 bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center">
                   {item.isVideo && (
                     <div className="w-14 h-14 rounded-full bg-primary/90 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
