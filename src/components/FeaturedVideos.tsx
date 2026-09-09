@@ -50,10 +50,14 @@ const FeaturedVideos = () => {
             >
               {video.videoUrl ? (
                 <video
-                  src={`${video.videoUrl}#t=0.1`}
-                  preload="metadata"
+                  src={`${video.videoUrl}#t=0.5`}
+                  preload="auto"
                   muted
                   playsInline
+                  onLoadedData={(e) => {
+                    const v = e.currentTarget;
+                    v.currentTime = 0.5;
+                  }}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               ) : (
