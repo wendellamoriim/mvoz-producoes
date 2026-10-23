@@ -45,7 +45,7 @@ const AboutSection = () => {
           >
             <img
               src={aboutImage}
-              alt="Equipa M Voz Produções"
+              alt="M Voz Produções - Edição e Pós-Produção em Estúdio"
               className="rounded-lg w-full h-[500px] object-cover"
             />
             <div className="absolute inset-0 rounded-lg border border-primary/20" />

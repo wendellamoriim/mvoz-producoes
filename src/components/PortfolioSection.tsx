@@ -8,6 +8,8 @@ import portfolio4 from "@/assets/portfolio-4.jpg";
 import portfolio5 from "@/assets/portfolio-5.jpg";
 import portfolio6 from "@/assets/portfolio-6.jpg";
 import playerPodcast from "@/assets/player-podcast.mp4";
+import videoBastidores from "@/assets/video-bastidores.mp4";
+import videoPromoPodcast from "@/assets/video-promo-podcast.mp4";
 
 const categories = [
   "Todos",
@@ -29,11 +31,11 @@ interface PortfolioItem {
 
 const portfolioItems: PortfolioItem[] = [
   { image: portfolio1, title: "Podcast Pro Studio", category: "Podcasts", isVideo: true, videoUrl: playerPodcast },
-  { image: portfolio2, title: "Campanha Publicitária", category: "Publicidade", isVideo: true },
-  { image: portfolio3, title: "Videoclipe Musical", category: "Clipes Musicais", isVideo: true },
-  { image: portfolio4, title: "Ensaio Editorial", category: "Ensaios Fotográficos", isVideo: false },
-  { image: portfolio5, title: "Documentário Natureza", category: "Documentários", isVideo: true },
-  { image: portfolio6, title: "Conteúdo Digital", category: "Redes Sociais", isVideo: true },
+  { image: portfolio2, title: "Campanha Publicitária", category: "Publicidade", isVideo: true, videoUrl: videoPromoPodcast },
+  { image: portfolio3, title: "Set de Entrevistas & Lounge", category: "Clipes Musicais", isVideo: false },
+  { image: portfolio4, title: "Ensaio Fotográfico", category: "Ensaios Fotográficos", isVideo: false },
+  { image: portfolio5, title: "Gravação de Mentorias", category: "Documentários", isVideo: false },
+  { image: portfolio6, title: "Bastidores de Gravação", category: "Redes Sociais", isVideo: true, videoUrl: videoBastidores },
 ];
 
 const PortfolioSection = () => {

@@ -3,8 +3,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Play, X } from "lucide-react";
 import portfolio1 from "@/assets/portfolio-1.jpg";
 import portfolio2 from "@/assets/portfolio-2.jpg";
-import portfolio3 from "@/assets/portfolio-3.jpg";
+import portfolio6 from "@/assets/portfolio-6.jpg";
 import playerPodcast from "@/assets/player-podcast.mp4";
+import videoBastidores from "@/assets/video-bastidores.mp4";
+import videoPromoPodcast from "@/assets/video-promo-podcast.mp4";
 
 interface VideoItem {
   thumbnail: string;
@@ -15,8 +17,8 @@ interface VideoItem {
 
 const videos: VideoItem[] = [
   { thumbnail: portfolio1, title: "Podcast Profissional", subtitle: "Estúdio M Voz", videoUrl: playerPodcast },
-  { thumbnail: portfolio2, title: "Campanha de Marca", subtitle: "Publicidade" },
-  { thumbnail: portfolio3, title: "Videoclipe Oficial", subtitle: "Clipe Musical" },
+  { thumbnail: portfolio6, title: "Gravação & Produção", subtitle: "Bastidores do Estúdio", videoUrl: videoBastidores },
+  { thumbnail: portfolio2, title: "Comunicação Estratégica", subtitle: "Campanha & Posicionamento", videoUrl: videoPromoPodcast },
 ];
 
 const FeaturedVideos = () => {

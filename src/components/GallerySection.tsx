@@ -5,18 +5,22 @@ import portfolio3 from "@/assets/portfolio-3.jpg";
 import portfolio4 from "@/assets/portfolio-4.jpg";
 import portfolio5 from "@/assets/portfolio-5.jpg";
 import portfolio6 from "@/assets/portfolio-6.jpg";
-import heroBg from "@/assets/hero-bg.jpg";
+import portfolio7 from "@/assets/portfolio-7.jpg";
+import portfolio8 from "@/assets/portfolio-8.jpg";
+import estudioPrincipal from "@/assets/estudio-principal.jpg";
 import aboutImage from "@/assets/about-image.jpg";
 
 const images = [
   { src: portfolio1, alt: "Estúdio Podcast", span: "col-span-1 row-span-1" },
-  { src: heroBg, alt: "Estúdio Principal", span: "col-span-2 row-span-1" },
-  { src: portfolio3, alt: "Set Musical", span: "col-span-1 row-span-1" },
+  { src: estudioPrincipal, alt: "Estúdio Principal", span: "col-span-2 row-span-1" },
+  { src: portfolio3, alt: "Set de Entrevistas & Lounge", span: "col-span-1 row-span-1" },
   { src: portfolio4, alt: "Ensaio Fotográfico", span: "col-span-1 row-span-2" },
-  { src: portfolio2, alt: "Produção Comercial", span: "col-span-1 row-span-1" },
-  { src: aboutImage, alt: "Equipa em Ação", span: "col-span-1 row-span-1" },
-  { src: portfolio5, alt: "Documentário", span: "col-span-1 row-span-1" },
-  { src: portfolio6, alt: "Conteúdo Digital", span: "col-span-1 row-span-1" },
+  { src: portfolio2, alt: "Campanha Publicitária", span: "col-span-1 row-span-1" },
+  { src: aboutImage, alt: "Edição & Pós-Produção", span: "col-span-1 row-span-1" },
+  { src: portfolio5, alt: "Gravação de Mentorias", span: "col-span-1 row-span-1" },
+  { src: portfolio6, alt: "Bastidores de Produção", span: "col-span-1 row-span-1" },
+  { src: portfolio7, alt: "Mesa Redonda M Voz", span: "col-span-1 row-span-1" },
+  { src: portfolio8, alt: "Direção & Produção", span: "col-span-1 row-span-1" },
 ];
 
 const GallerySection = () => {
@@ -38,7 +42,7 @@ const GallerySection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 auto-rows-[200px] md:auto-rows-[250px]">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 auto-rows-[200px] md:auto-rows-[250px] grid-flow-dense">
           {images.map((img, i) => (
             <motion.div
               key={i}
