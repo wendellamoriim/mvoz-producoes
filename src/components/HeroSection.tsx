@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { CalendarDays, FileText } from "lucide-react";
-import heroBg from "@/assets/pri-hero.png";
+import heroBg from "@/assets/pri-hero.jpg";
 
 const HeroSection = () => {
   return (
